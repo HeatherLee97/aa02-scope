@@ -24,17 +24,19 @@ const checkGuess = (num) => {
 const askGuess = () => {
     rl.question("Enter a guess: ", answer => {
         // print their response
-       const isCorrect = checkGuess(answer)
+       const isCorrect = checkGuess(Number(answer))
        if (isCorrect === true){
-        console.log("Correct")
+rl.close();
 
-        rl.close();
        }
+
         // close the interface
-       else if (!isCorrect) {
-        rl.question("Try again: ")
-       }
-      });
-}
+       if (!isCorrect) {
+       askGuess()
 
-console.log(askGuess())
+       }
+
+      });
+
+}
+askGuess()
